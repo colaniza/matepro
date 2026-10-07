@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas Mágicas SIMCE - Sistema de Aprendizaje</title>
+    <!-- Estilos de la Plataforma -->
+    <link rel="stylesheet" href="CSS/menu.css">
+    <link rel="stylesheet" href="CSS/tablas.css">
+    <link rel="stylesheet" href="CSS/juegos.css">
+    <link rel="stylesheet" href="CSS/simce.css">
+    <!-- Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Header de Perfil del Alumno -->
+    <header class="header-profile">
+        <div class="profile-info">
+            <div class="avatar-badge" id="userAvatarDisplay">🦉</div>
+            <div>
+                <div class="user-name" id="userNameDisplay">Estudiante</div>
+                <div class="user-subtitle">Estudiante de 4° Básico</div>
+            </div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-pill">
+                <span>⭐ Estrellas:</span>
+                <span id="userEstrellasDisplay" style="color:var(--warning)">0</span>
+            </div>
+            <div class="stat-pill">
+                <span>🏆 Puntos:</span>
+                <span id="userPuntosDisplay" style="color:#00cec9">0</span>
+            </div>
+            <div class="stat-pill">
+                <span>📊 Progreso:</span>
+                <span id="userProgresoText" style="color:#2ed573">0%</span>
+            </div>
+            <button class="btn-salir" onclick="salirAlRegistro()">⬅ Salir</button>
+        </div>
+    </header>
+
+    <!-- Navegación por Pestañas (Nav Tabs) -->
+    <nav class="nav-tabs-container">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="cambiarTab('inicio', this)">
+                🏠 Menú Principal
+            </button>
+            <button class="tab-btn" onclick="cambiarTab('aprender', this)">
+                📘 Aprender Tablas (2-10)
+            </button>
+            <button class="tab-btn" onclick="cambiarTab('juegos', this)">
+                🎮 Juegos y Desafíos
+            </button>
+            <button class="tab-btn" onclick="cambiarTab('logros', this)">
+                🏆 Logros y Medallas
+            </button>
+            <button class="tab-btn" onclick="cambiarTab('simce', this)" style="border-color:#0984e3; color:#0984e3;">
+                📝 Ensayo SIMCE
+            </button>
+        </div>
+    </nav>
+
+    <!-- Área de Contenido Dinámico -->
+    <main class="content-area">
+
+        <!-- 1. VISTA: INICIO / TABLEROS DE TABLAS -->
+        <section id="view-inicio" class="section-view active">
+            <h2 class="section-title">📘 Módulos de las Tablas de Multiplicar</h2>
+            <p class="section-description">Selecciona una tabla para explorar sus grupos visuales, patrones y desafíos interactivos:</p>
+            
+            <div class="tablas-grid" id="tablasGridMenu">
+                <!-- Se genera dinámicamente -->
+            </div>
+
+            <!-- Banner Promocional Ensayo SIMCE -->
+            <div class="simce-banner">
+                <div class="simce-info">
+                    <h3>📝 Ensayo Matemático SIMCE 4° Básico</h3>
+                    <p>Demuestra lo que has aprendido resolviendo 10 situaciones del mundo real con explicaciones paso a paso.</p>
+                </div>
+                <button class="btn-iniciar-simce" onclick="cambiarTab('simce', document.querySelector('.tab-btn[onclick*=\'simce\']'))">
+                    ¡IR AL ENSAYO! 🚀
+                </button>
+            </div>
+        </section>
+
+        <!-- 2. VISTA: APRENDER TABLAS (EXPLORADOR VISUAL Y GRUPOS) -->
+        <section id="view-aprender" class="section-view">
+            <div class="tablas-explorer-container">
+                <div class="selector-tablas-header" id="selectorTablasHeader">
+                    <!-- Se genera dinámicamente -->
+                </div>
+
+                <div class="tabla-display-card">
+                    <h2 class="tabla-display-title" id="tablaDisplayTitle">Tabla del 2</h2>
+                    
+                    <div class="patron-box">
+                        <div>
+                            💡 <strong>Patrón Mágico:</strong> <span id="patronTexto">...</span>
+                        </div>
+                        <button class="btn-patron-audio" id="btnPatronAudio">🔊 Escuchar</button>
+                    </div>
+
+                    <div class="visual-groups-area">
+                        <div class="visual-groups-title">📦 Representación Gráfica en Grupos de Objetos:</div>
+                        <div class="groups-flex" id="groupsFlex"></div>
+                        <div class="multiplication-math-express" id="multiplicationExpress">2 × 3 = 6</div>
+                        <p style="margin-top:12px; font-weight:700; color:#64748b;" id="groupDescText">3 grupos de 2 manzanas</p>
+                    </div>
+
+                    <h3 style="text-align:left; margin-bottom:15px; font-size:1.4rem; color:#2d3436;">🔢 Explora las Multiplicaciones:</h3>
+                    <div class="tabla-rows-grid" id="tablaRowsGrid"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. VISTA: JUEGOS Y DESAFÍOS (LOS 7 MINIJUEGOS) -->
+        <section id="view-juegos" class="section-view">
+            <h2 class="section-title">🎮 Minijuegos Matemáticos Didácticos</h2>
+            <p class="section-description">Elige tu minijuego favorito para poner a prueba tus habilidades de multiplicación:</p>
+
+            <div class="juegos-grid">
+                <div class="juego-card">
+                    <div class="juego-icon">🧠</div>
+                    <div class="juego-titulo">Memoria Matemática</div>
+                    <div class="juego-desc">Encuentra las parejas volteando las cartas que relacionan la multiplicación con su resultado.</div>
+                    <button class="btn-jugar" onclick="iniciarMemoria()">¡JUGAR MEMORIA! 🚀</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icon">🎈</div>
+                    <div class="juego-titulo">Atrapa el Resultado</div>
+                    <div class="juego-desc">Selecciona rápidamente la burbuja flotante que contenga el resultado correcto antes de que caiga.</div>
+                    <button class="btn-jugar" onclick="iniciarAtrapa()">¡ATRAPAR AHORA! 🎈</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icon">📦</div>
+                    <div class="juego-titulo">Construye la Multiplicación</div>
+                    <div class="juego-desc">Agrupa objetos y contenedores para representar físicamente la multiplicación dada.</div>
+                    <button class="btn-jugar" onclick="iniciarConstruye()">¡CONSTRUIR! 📦</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icon">🤖</div>
+                    <div class="juego-titulo">¿Quién tiene la respuesta?</div>
+                    <div class="juego-desc">Observa a Personaje 1, 2, 3 y 4 y descubre cuál sostiene el número exacto.</div>
+                    <button class="btn-jugar" onclick="iniciarQuienTiene()">¡ELEGIR PERSONAJE! 🤖</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icon">⏱️</div>
+                    <div class="juego-titulo">Desafío Contra el Tiempo</div>
+                    <div class="juego-desc">Responde la mayor cantidad de multiplicaciones en 30 segundos y demuestra tu velocidad.</div>
+                    <button class="btn-jugar" onclick="iniciarReloj()">¡DESAFÍO VELOZ (30s)! ⏱️</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icon">🧩</div>
+                    <div class="juego-titulo">Arrastra y Completa</div>
+                    <div class="juego-desc">Arrastra o selecciona las fichas con los números adecuados para llenar los espacios en blanco.</div>
+                    <button class="btn-jugar" onclick="iniciarArrastra()">¡COMPLETAR! 🧩</button>
+                </div>
+
+                <div class="juego-card">
+                    <div class="juego-icon">🕵️‍♂️</div>
+                    <div class="juego-titulo">Detective Matemático</div>
+                    <div class="juego-desc">Lee con atención las pistas del misterio y descubre cuál es el número oculto.</div>
+                    <button class="btn-jugar" onclick="iniciarDetective()">¡INVESTIGAR! 🕵️‍♂️</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. VISTA: LOGROS Y MEDALLAS -->
+        <section id="view-logros" class="section-view">
+            <h2 class="section-title">🏆 Galería de Logros e Insignias</h2>
+            <p class="section-description">Completa misiones y ensayos para desbloquear todas las medallas especiales:</p>
+            <div class="logros-grid" id="logrosGridMenu"></div>
+        </section>
+
+        <!-- 5. VISTA: ENSAYO MATEMÁTICO SIMCE (LAYOUT HORIZONTAL SUPERIOR) -->
+        <section id="view-simce" class="section-view">
+            <div class="simce-exam-layout">
+                <!-- Barra Horizontal de Preguntas (1 al 10) sin texto de título -->
+                <aside class="simce-sidebar">
+                    <div class="simce-nav-grid" id="simceNavGrid"></div>
+                    <div class="simce-progress-box" id="simceProgressText">Respondidas: 0 de 10</div>
+                </aside>
+
+                <!-- Área Principal de Pregunta -->
+                <article class="simce-main-content">
+                    <div class="simce-question-header">
+                        <span class="simce-question-badge" id="simceQuestionBadge">Pregunta 1 de 10</span>
+                        <span style="font-weight:700; color:#64748b;">Evaluación SIMCE 4° Básico</span>
+                    </div>
+
+                    <div class="simce-context-text" id="simceContextText">Cargando pregunta...</div>
+                    <div class="simce-illustration-box" id="simceIllustrationBox">✏️</div>
+
+                    <div class="simce-options-list" id="simceOptionsList"></div>
+
+                    <div class="simce-nav-actions">
+                        <button class="btn-simce-nav" id="btnSimceAnterior" onclick="navegarSimce(-1)">⬅ Anterior</button>
+                        <button class="btn-simce-nav" id="btnSimceSiguiente" onclick="navegarSimce(1)">Siguiente ➡️</button>
+                        <button class="btn-simce-finish" onclick="finalizarEnsayoSimce()">🏁 FINALIZAR ENSAYO</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Transversal para Juegos y Resultados -->
+    <div class="game-modal" id="gameModal">
+        <div class="game-modal-content">
+            <button class="btn-close-modal" onclick="cerrarModalJuego()">✕</button>
+            <div id="gameModalBody">
+                <!-- Se inyecta dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="JS/audio.js"></script>
+    <script src="JS/storage.js"></script>
+    <script src="JS/tablas.js"></script>
+    <script src="JS/juegos.js"></script>
+    <script src="JS/simce.js"></script>
+    <script src="JS/menu.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            inicializarModuloTablas();
+            inicializarEnsayoSimce();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenida - Plataforma Educativa</title>
+    <link rel="icon" type="image/jpg" href="img/logopagina.jpg">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/estiloinicio_pagina.css">
+</head>
+<body>
+
+    <div class="container container-game">
+        <div class="bienvenida-header">
+            <div class="user-info">
+                <img id="displayAvatar" src="" alt="Tu Avatar" onerror="this.src='img/avatar1.jpg'">
+                <span class="display-nombre">¡Hola, <span id="displayNombre">...</span>!</span>
+            </div>
+            <h3 id="msgTexto">Cargando niveles...</h3>
+        </div>
+
+        <hr class="divisor-bienvenida">
+
+        <p class="instruccion-cursos">Selecciona tu curso para comenzar a jugar:</p>
+        
+        <div class="grid-niveles">
+            <div class="nivel-card" onclick="irANivel(1)">1° Básico</div>
+            <div class="nivel-card" onclick="irANivel(2)">2° Básico</div>
+            <div class="nivel-card" onclick="irANivel(3)">3° Básico</div>
+            <div class="nivel-card" onclick="irANivel(4)">4° Básico</div>
+            <div class="nivel-card" onclick="irANivel(5)">5° Básico</div>
+            <div class="nivel-card" onclick="irANivel(6)">6° Básico</div>
+            <div class="nivel-card" onclick="irANivel(7)">7° Básico</div>
+            <div class="nivel-card" onclick="irANivel(8)">8° Básico</div>
+        </div>
+
+        <button class="btn-volver" onclick="window.location.href='index.html'">
+            ⬅ Salir
+        </button>
+    </div>
+
+    <audio id="audioSeleccion" src="sonidos/click.mp3"></audio>
+
+    <script src="js/bienvenida.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+/* ==========================================================================
+   simce.css - Estilos del Módulo de Ensayo SIMCE (Navegación Horizontal)
+   ========================================================================== */
+
+.simce-exam-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Panel Superior Horizontal de Preguntas (1 al 10) */
+.simce-sidebar {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 18px 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    border: 2px solid #e2e8f0;
+}
+
+.simce-sidebar-title {
+    display: none; /* Se elimina el texto "📌 Preguntas del Ensayo" según requerimiento */
+}
+
+.simce-nav-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 0;
+}
+
+.btn-question-num {
+    flex: 1;
+    min-width: 85px;
+    background: #f1f2f6;
+    border: 2px solid transparent;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #57606f;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-question-num:hover {
+    background: #dfe4ea;
+    transform: translateY(-2px);
+}
+
+.btn-question-num.active {
+    border-color: #4e54c8;
+    background: #e0e2fe;
+    color: #4e54c8;
+    font-weight: 900;
+    box-shadow: 0 4px 12px rgba(78,84,200,0.25);
+}
+
+.btn-question-num.answered {
+    background: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.btn-question-num.answered::after {
+    content: "✓";
+    font-weight: 900;
+}
+
+.simce-progress-box {
+    text-align: center;
+    background: #f8fafc;
+    padding: 10px 20px;
+    border-radius: 14px;
+    font-weight: 800;
+    color: #475569;
+    font-size: 0.95rem;
+    margin-top: 12px;
+}
+
+/* Área Principal de Pregunta */
+.simce-main-content {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 2px solid #cbd5e1;
+}
+
+.simce-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 15px;
+}
+
+.simce-question-badge {
+    background: #4e54c8;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.simce-context-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.simce-illustration-box {
+    background: #f8fafc;
+    border: 2px dashed #94a3b8;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+}
+
+/* Alternativas de Selección Múltiple (A, B, C, D) */
+.simce-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 35px;
+}
+
+.simce-option-card {
+    background: #f8fafc;
+    border: 3px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 16px 22px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.simce-option-card:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateX(4px);
+}
+
+.simce-option-card.selected {
+    background: #e0e2fe;
+    border-color: #4e54c8;
+    color: #4e54c8;
+}
+
+.simce-option-letter {
+    width: 38px;
+    height: 38px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Botones de Navegación */
+.simce-nav-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #f1f5f9;
+    padding-top: 20px;
+}
+
+.btn-simce-nav {
+    background: #f1f5f9;
+    color: #475569;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-simce-nav:hover {
+    background: #cbd5e1;
+}
+
+.btn-simce-finish {
+    background: #2ed573;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 16px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(46, 213, 115, 0.4);
+    transition: all 0.2s ease;
+}
+
+.btn-simce-finish:hover {
+    transform: scale(1.04);
+}
+
+/* Pantalla de Resultados SIMCE */
+.simce-results-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.simce-score-circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 10px 25px rgba(78, 84, 200, 0.3);
+}
+
+.simce-score-num {
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.simce-feedback-list {
+    text-align: left;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.simce-feedback-item {
+    background: #f8fafc;
+    border-radius: 18px;
+    padding: 18px;
+    border-left: 6px solid #cbd5e1;
+}
+
+.simce-feedback-item.correct {
+    border-left-color: #2ed573;
+    background: #f0fff4;
+}
+
+.simce-feedback-item.incorrect {
+    border-left-color: #ff4757;
+    background: #fff5f5;
+}

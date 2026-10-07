@@ -1,0 +1,322 @@
+/* ==========================================================================
+   ingreso.css - Estilos Modernos y Gamificados para Ingreso de Estudiantes
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+
+:root {
+    --primary: #4e54c8;
+    --primary-gradient: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+    --accent: #ff6b6b;
+    --accent-yellow: #f1c40f;
+    --bg-gradient: linear-gradient(135deg, #1a1c29 0%, #2a2d43 100%);
+    --card-bg: rgba(255, 255, 255, 0.96);
+    --text-dark: #2d3436;
+    --shadow-pop: 0 15px 35px rgba(0, 0, 0, 0.3);
+    --radius-large: 28px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Partículas flotantes de fondo */
+.bg-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-shape {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.15;
+    animation: floatAnim 10s infinite linear;
+}
+
+@keyframes floatAnim {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Contenedor Principal de Registro */
+.ingreso-container {
+    position: relative;
+    z-index: 1;
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 620px;
+    border-radius: var(--radius-large);
+    padding: 40px 35px;
+    box-shadow: var(--shadow-pop);
+    text-align: center;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 4px solid rgba(255, 255, 255, 0.4);
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.85) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Logo y Nombre de Plataforma */
+.logo-header {
+    margin-bottom: 25px;
+}
+
+.logo-badge {
+    width: 90px;
+    height: 90px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(78, 84, 200, 0.3);
+    animation: pulseLogo 2.5s infinite ease-in-out;
+    border: 4px solid #4e54c8;
+    overflow: hidden;
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes pulseLogo {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+.title-main {
+    font-size: 2.3rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #2c3e50, #4e54c8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 12px;
+}
+
+.subtitle-main {
+    font-size: 1.05rem;
+    color: #636e72;
+    font-weight: 600;
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.label-input {
+    display: block;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+}
+
+.input-nombre {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: 3px solid #dfe6e9;
+    border-radius: 18px;
+    outline: none;
+    transition: all 0.25s ease;
+    background: #f8f9fa;
+    color: var(--text-dark);
+}
+
+.input-nombre:focus {
+    border-color: #4e54c8;
+    background: #ffffff;
+    box-shadow: 0 0 0 5px rgba(78, 84, 200, 0.15);
+}
+
+/* Selector de Avatares con Imágenes Reales */
+.avatar-section-title {
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 20px 0 14px;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.avatar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.avatar-card {
+    background: #ffffff;
+    border: 3px solid #e2e8f0;
+    border-radius: 22px;
+    padding: 14px 10px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: #ff9f43;
+    box-shadow: 0 10px 20px rgba(255, 159, 67, 0.3);
+}
+
+.avatar-card.selected {
+    border-color: #4e54c8;
+    background: #e0e2fe;
+    box-shadow: 0 8px 25px rgba(78, 84, 200, 0.4);
+    transform: scale(1.06);
+}
+
+.avatar-img-wrapper {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #ff9f43;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-img-real {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.avatar-card:hover .avatar-img-real {
+    transform: scale(1.1);
+}
+
+.avatar-name {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* Botón de Acción Principal */
+.btn-ingresar {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ffffff;
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 184, 148, 0.4);
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-ingresar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 184, 148, 0.5);
+    background: linear-gradient(135deg, #00cec9, #00b894);
+}
+
+/* Modal de Advertencia */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-box {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 24px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    box-shadow: var(--shadow-pop);
+}
+
+.modal-icon {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.modal-text {
+    font-size: 1rem;
+    color: #636e72;
+    margin-bottom: 22px;
+    font-weight: 600;
+}
+
+.btn-modal-close {
+    background: #4e54c8;
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 800;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .ingreso-container {
+        padding: 30px 20px;
+    }
+    .avatar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

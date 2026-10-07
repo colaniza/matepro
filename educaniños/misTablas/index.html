@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas Mágicas SIMCE - Ingreso de Estudiantes</title>
+    <link rel="icon" type="image/jpg" href="Sistema/IMAGEN/logopagina.jpg">
+    <link rel="stylesheet" href="Sistema/CSS/ingreso.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <!-- Fondo con partículas animadas -->
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <!-- Contenedor Principal de Registro -->
+    <main class="ingreso-container">
+        <header class="logo-header">
+            <div class="logo-badge">
+                <img src="Sistema/IMAGEN/iconplataforma.jpg" alt="Logo Plataforma" class="logo-img" onerror="this.src='../img/iconplataforma.jpg'">
+            </div>
+            <h1 class="title-main">Tablas Mágicas</h1>
+            <p class="subtitle-main">Plataforma de Aprendizaje y Preparación SIMCE 4° Básico</p>
+        </header>
+
+        <section class="form-section">
+            <div class="form-group">
+                <label for="nombreInput" class="label-input">✍️ Ingresa tu Nombre Completo:</label>
+                <input type="text" id="nombreInput" class="input-nombre" placeholder="Ej: Mateo Silva" maxlength="25" autocomplete="off">
+            </div>
+
+            <div class="avatar-section">
+                <p class="avatar-section-title">🎭 Selecciona tu Avatar Educativo:</p>
+                <div class="avatar-grid" id="avatarGrid">
+                    <!-- Se genera dinámicamente con JavaScript -->
+                </div>
+            </div>
+
+            <button id="btnIngresar" class="btn-ingresar">
+                ¡COMENZAR LA AVENTURA! 🚀
+            </button>
+        </section>
+    </main>
+
+    <!-- Modal de Advertencia -->
+    <div class="modal-overlay" id="modalAdvertencia">
+        <div class="modal-box">
+            <div class="modal-icon">⚠️</div>
+            <h2 class="modal-title" id="modalTitle">Faltan Datos</h2>
+            <p class="modal-text" id="modalText">Por favor ingresa tu nombre y selecciona un avatar para continuar.</p>
+            <button class="btn-modal-close" onclick="cerrarModal()">ENTENDIDO</button>
+        </div>
+    </div>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="Sistema/JS/audio.js"></script>
+    <script src="Sistema/JS/storage.js"></script>
+    <script src="Sistema/JS/ingreso.js"></script>
+</body>
+</html>

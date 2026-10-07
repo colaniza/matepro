@@ -1,0 +1,543 @@
+/* ==========================================================================
+   juegos.css - Estilos Animados y Gamificados para los 7 Minijuegos (Anti-Achunte)
+   ========================================================================== */
+
+/* Layout General de Minijuegos */
+.game-play-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.game-title-badge {
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #ff9f43;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-stats-pills {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.stat-box {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+    padding: 8px 16px;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.game-timer-wrapper {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.game-timer-bar-bg {
+    width: 100%;
+    height: 12px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.game-timer-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2ed573, #ffa502, #ff4757);
+    width: 100%;
+    transition: width 1s linear;
+}
+
+/* JUEGO 1: MEMORIA MATEMÁTICA (MÁS GRANDE Y CORREGIDA) */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.memory-card {
+    height: 135px;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 8px 20px rgba(78, 84, 200, 0.3);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 4px solid transparent;
+    text-align: center;
+    padding: 10px;
+}
+
+.memory-card:hover {
+    transform: translateY(-5px) scale(1.04);
+}
+
+.memory-card.flipped {
+    background: #ffffff;
+    color: #2d3436;
+    border-color: #4e54c8;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transform: none; /* Evita rotación espejada o al revés */
+}
+
+.memory-card.matched {
+    background: #2ed573;
+    color: white;
+    border-color: #26af5f;
+    cursor: default;
+    opacity: 0.95;
+    animation: popSuccess 0.4s ease;
+}
+
+@keyframes popSuccess {
+    0% { transform: scale(0.8); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* JUEGO 2: ATRAPA EL RESULTADO (CAJA MÁS GRANDE Y SIN BLOQUEO DE GLOBOS) */
+.catch-arena {
+    height: 500px;
+    background: linear-gradient(to bottom, #81ecec, #74b9ff);
+    border-radius: 28px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 4px solid #0984e3;
+    box-shadow: inset 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.catch-target-question {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 14px 40px;
+    border-radius: 30px;
+    font-size: 2.3rem;
+    font-weight: 900;
+    color: #2d3436;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    z-index: 10;
+    border: 4px solid #ff9f43;
+}
+
+.bubble-item {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 4px solid #ff7675;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #2d3436;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    animation: floatUpInfinite 5.5s infinite linear;
+    transition: transform 0.2s;
+}
+
+.bubble-item:hover {
+    transform: scale(1.15);
+}
+
+@keyframes floatUpInfinite {
+    0% { bottom: -100px; opacity: 1; }
+    90% { opacity: 1; }
+    100% { bottom: 540px; opacity: 0; }
+}
+
+/* JUEGO 3: CONSTRUYE LA MULTIPLICACIÓN (BOTONES BONITOS Y ESTÉTICOS) */
+.build-area {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 32px;
+    text-align: center;
+    border: 3px solid #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.build-question {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 25px;
+    color: #4e54c8;
+}
+
+.build-groups-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    min-height: 160px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 24px;
+    border: 3px dashed #cbd5e1;
+}
+
+.build-group-box {
+    width: 130px;
+    height: 130px;
+    background: #ffffff;
+    border: 3px dashed #a29bfe;
+    border-radius: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 6px;
+    transition: all 0.25s;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+}
+
+/* Botones con Diseño Estético */
+.build-actions-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-build-action {
+    border: none;
+    padding: 16px 28px;
+    border-radius: 20px;
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-build-action:hover {
+    transform: translateY(-4px) scale(1.03);
+}
+
+.btn-build-add {
+    background: linear-gradient(135deg, #4e54c8, #6c5ce7);
+}
+
+.btn-build-remove {
+    background: linear-gradient(135deg, #ff4757, #ff6b6b);
+}
+
+.btn-build-verify {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    font-size: 1.25rem;
+    padding: 16px 36px;
+}
+
+/* JUEGO 4: ¿QUIÉN TIENE LA RESPUESTA? (PERSONAJES REALES 1, 2, 3, 4) */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.character-card {
+    background: white;
+    border-radius: 28px;
+    padding: 22px 15px;
+    text-align: center;
+    border: 3.5px solid #cbd5e1;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.character-card:hover {
+    transform: translateY(-8px) scale(1.04);
+    border-color: #ff9f43;
+    box-shadow: 0 12px 25px rgba(255, 159, 67, 0.25);
+}
+
+.character-avatar-wrapper {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3.5px solid #ff9f43;
+    margin: 0 auto 12px auto;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.character-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.character-name-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #2d3436;
+    margin-bottom: 10px;
+}
+
+.character-sign {
+    background: #fffa65;
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: #2d3436;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* JUEGO 5: DESAFÍO CONTRA EL TIEMPO */
+.timer-challenge-box {
+    text-align: center;
+    padding: 25px;
+}
+
+.timer-question {
+    font-size: 3.8rem;
+    font-weight: 900;
+    color: #4e54c8;
+    margin: 20px 0;
+}
+
+.timer-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 540px;
+    margin: 0 auto;
+}
+
+.btn-option-timer {
+    background: #ffffff;
+    border: 3px solid #4e54c8;
+    padding: 20px;
+    font-size: 1.9rem;
+    font-weight: 900;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+}
+
+.btn-option-timer:hover {
+    background: #4e54c8;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.btn-option-timer.locked-error {
+    background: #ff4757 !important;
+    color: white !important;
+    border-color: #d63031 !important;
+    pointer-events: none;
+}
+
+.btn-option-timer.locked-disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* JUEGO 6: ARRASTRA Y COMPLETA */
+.drag-drop-container {
+    padding: 25px;
+    text-align: center;
+    background: #f8fafc;
+    border-radius: 28px;
+    border: 3px solid #e2e8f0;
+}
+
+.drag-equation-box {
+    background: white;
+    padding: 25px;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+
+.drag-target-slot {
+    min-width: 90px;
+    height: 65px;
+    background: #eef2ff;
+    border: 3px dashed #4e54c8;
+    border-radius: 18px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    color: #4e54c8;
+    font-size: 2rem;
+    font-weight: 900;
+    transition: all 0.25s ease;
+}
+
+.drag-chips-pool {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+.chip-item {
+    background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+    border: 3px solid #f39c12;
+    padding: 14px 28px;
+    border-radius: 20px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #2d3436;
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 6px 15px rgba(243, 156, 18, 0.3);
+    transition: all 0.2s ease;
+}
+
+.chip-item.blocked {
+    opacity: 0.4;
+    filter: grayscale(1);
+    cursor: not-allowed;
+    pointer-events: none;
+    border-color: #94a3b8;
+    background: #cbd5e1;
+}
+
+/* JUEGO 7: DETECTIVE MATEMÁTICO */
+.detective-box {
+    background: #1e293b;
+    color: white;
+    border-radius: 28px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.detective-badge {
+    font-size: 4.5rem;
+    margin-bottom: 10px;
+}
+
+.detective-clue {
+    font-size: 1.35rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.08);
+    padding: 22px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* MODAL CELEBRACIÓN FIN DE JUEGO */
+.game-over-modal {
+    text-align: center;
+    padding: 25px 15px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.game-over-icon {
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+
+.game-over-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #4e54c8;
+    margin-bottom: 10px;
+}
+
+.game-over-score-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 20px;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 184, 148, 0.35);
+}
+
+.game-over-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 450px;
+    margin: 0 auto 25px auto;
+}
+
+.game-over-stat-card {
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 18px;
+    border: 2px solid #e2e8f0;
+}
+
+.game-over-stat-val {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #2d3436;
+}
+
+.game-over-stat-lbl {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.btn-retry-game {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    color: white;
+    border: none;
+    padding: 16px 36px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+    transition: transform 0.2s;
+    margin: 5px;
+}
+
+.btn-retry-game:hover {
+    transform: scale(1.05);
+}

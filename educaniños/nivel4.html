@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 4 - Sudoku Matemático</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/nivel4.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="user-info-nivel">
+        <img id="displayAvatar" src="img/default-avatar.jpg" alt="Avatar Alumno">
+        <span id="displayNombre">Cargando...</span>
+    </div>
+
+    <div class="game-container">
+        <div class="game-box">
+            
+            <div class="header-llamativo">
+                <h2>🧩 ¡EL SUDOKU DE LAS OPERACIONES! 🧩</h2>
+                <h3 class="titulo-instruccion">¡Resuelve los desafíos matemáticos para descubrir los números ocultos y completa el tablero!</h3>
+            </div>
+
+            <div class="sudoku-layout">
+                
+                <div id="sudoku-board" class="sudoku-board"></div>
+
+                <div class="control-panel">
+                    <div class="status-box">
+                        <p id="info-pista">💡 Selecciona una casilla con operación para empezar.</p>
+                        <div id="operacion-pendiente" class="operacion-display">?</div>
+                    </div>
+
+                    <div class="teclado-numerico">
+                        <button class="btn-num-sudoku" onclick="ingresarNumero(1)">1</button>
+                        <button class="btn-num-sudoku" onclick="ingresarNumero(2)">2</button>
+                        <button class="btn-num-sudoku" onclick="ingresarNumero(3)">3</button>
+                        <button class="btn-num-sudoku" onclick="ingresarNumero(4)">4</button>
+                        <button class="btn-borrar" onclick="borrarCasilla()">❌ Borrar</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="action-zone">
+                <button id="btnVerificar" class="btn-juego activo" onclick="verificarSudoku()">
+                    ¡COMPROBAR SUDOKU! 🚀
+                </button>
+                <br>
+                <button class="btn-volver" onclick="window.location.href='bienvenida.html'">
+                    ⬅️ Volver al menú
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/bienvenida.js"></script>
+    <script src="js/nivel4.js"></script>
+</body>
+</html>

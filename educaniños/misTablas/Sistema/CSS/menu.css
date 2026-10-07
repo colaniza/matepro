@@ -1,0 +1,497 @@
+/* ==========================================================================
+   menu.css - Estilos para el Menú Principal Gamificado y Hub de Actividades
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+
+:root {
+    --bg-main: #f4f6fc;
+    --primary: #4e54c8;
+    --primary-dark: #373b8e;
+    --accent: #ff4757;
+    --success: #2ed573;
+    --warning: #ffa502;
+    --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    --border-radius: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    color: #2f3542;
+    min-height: 100vh;
+    padding-bottom: 50px;
+}
+
+/* Header de Usuario Gamificado */
+.header-profile {
+    background: linear-gradient(135deg, #2f3542 0%, #1e272e 100%);
+    color: white;
+    padding: 25px 40px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.avatar-badge {
+    width: 75px;
+    height: 75px;
+    background: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    border: 3.5 solid var(--warning);
+    overflow: hidden;
+}
+
+.avatar-header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-name {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.user-subtitle {
+    font-size: 0.95rem;
+    color: #a4b0be;
+    font-weight: 600;
+}
+
+.stats-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.stat-pill {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-salir {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+}
+
+.btn-salir:hover {
+    transform: scale(1.05);
+}
+
+/* Nav Tabs Principal */
+.nav-tabs-container {
+    max-width: 1200px;
+    margin: 30px auto 20px auto;
+    padding: 0 20px;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: white;
+    border: 2px solid #e1b12c;
+    padding: 14px 24px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #57606f;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-btn:hover {
+    transform: translateY(-3px);
+    background: #fef5d1;
+    color: #2f3542;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(78, 84, 200, 0.35);
+}
+
+/* Área de Contenido Principal */
+.content-area {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-view {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.section-view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Encabezados de Sección */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #2f3542;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-description {
+    color: #747d8c;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+/* Grid de Tarjetas de Tablas (2 al 10) */
+.tablas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.tabla-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabla-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.tabla-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.tabla-num {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.tabla-badge {
+    background: #ffeaa7;
+    color: #d35400;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    height: 12px;
+    background: #f1f2f6;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0 10px 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00b894, #00cec9);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.tabla-actions {
+    margin-top: 18px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-aprender {
+    flex: 1;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-aprender:hover {
+    background: var(--primary-dark);
+}
+
+/* Grid de Juegos y Desafíos */
+.juegos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.juego-card {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px 25px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.juego-card:hover {
+    transform: translateY(-8px);
+}
+
+.juego-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.juego-titulo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #2f3542;
+    margin-bottom: 10px;
+}
+
+.juego-desc {
+    color: #747d8c;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.btn-jugar {
+    background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(255, 107, 107, 0.35);
+    transition: all 0.2s ease;
+}
+
+.btn-jugar:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.45);
+}
+
+/* Medallas y Logros */
+.logros-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.logro-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    opacity: 0.5;
+    filter: grayscale(1);
+    transition: all 0.3s ease;
+}
+
+.logro-card.unlocked {
+    opacity: 1;
+    filter: grayscale(0);
+    border: 2px solid var(--warning);
+    background: #fffdf2;
+}
+
+.logro-icon {
+    font-size: 3rem;
+}
+
+.logro-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #2f3542;
+}
+
+.logro-desc {
+    font-size: 0.85rem;
+    color: #747d8c;
+    font-weight: 600;
+}
+
+/* Banner del Ensayo SIMCE */
+.simce-banner {
+    background: linear-gradient(135deg, #0984e3 0%, #6c5ce7 100%);
+    color: white;
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(108, 92, 231, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.simce-info h3 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.simce-info p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+.btn-iniciar-simce {
+    background: #fffa65;
+    color: #2c2c54;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    font-weight: 900;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: all 0.25s ease;
+}
+
+.btn-iniciar-simce:hover {
+    transform: scale(1.08) rotate(-1deg);
+    background: #ffffff;
+}
+
+/* Modales para Minijuegos y Vistas Interactivas */
+.game-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.game-modal.active {
+    display: flex;
+}
+
+.game-modal-content {
+    background: #ffffff;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 32px;
+    padding: 35px;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.btn-close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: #ff4757;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255,71,87,0.4);
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .header-profile {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .stats-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .simce-banner {
+        padding: 25px;
+    }
+}
